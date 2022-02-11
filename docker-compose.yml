@@ -13,10 +13,11 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   teampass:
-    image: teampass/teampass
+    build:
+      context: .
     restart: always
     environment:
-      VIRTUAL_HOST: teampass.example.com
+      VIRTUAL_HOST: mskt-osp-docker02.corp.tass.ru
     networks:
       - frontend
       - backend
