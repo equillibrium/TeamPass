@@ -1,4 +1,4 @@
-FROM richarvey/nginx-php-fpm:1.9.0
+FROM richarvey/nginx-php-fpm:1.5.7
 
 # The location of the web files
 ARG VOL=/var/www/html
@@ -32,7 +32,7 @@ RUN sed -i "/^}/i \
 COPY teampass-docker-start.sh /teampass-docker-start.sh
 
 # Configure nginx-php-fpm image to pull our code.
-ENV REPO_URL https://github.com/nilsteampassnet/TeamPass.git
+ENV REPO_URL https://gitlab.com/NilsLaumaille/teampass-v3.git
 
 ENTRYPOINT ["/bin/sh"]
 CMD ["/teampass-docker-start.sh"]
