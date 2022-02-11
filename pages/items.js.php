@@ -76,7 +76,7 @@ $var['hidden_asterisk'] = '<i class="fas fa-asterisk mr-2"></i><i class="fas fa-
         applicationVars,
         initialPageLoad = true,
         previousSelectedFolder=-1,
-        debugJavascript = true;
+        debugJavascript = false;
 
     // Manage memory
     browserSession(
@@ -3392,11 +3392,6 @@ $var['hidden_asterisk'] = '<i class="fas fa-asterisk mr-2"></i><i class="fas fa-
                 uniqueLoadData: store.get('teampassApplication').queryUniqueLoad,
                 nb_items_to_display_once: store.get('teampassApplication').itemsShownByQuery,
             };
-
-            if (debugJavascript === true) {
-                console.log('Do list of items in folder with next parameters:');
-                console.log(dataArray);
-            }
             
             //ajax query
             var request = $.post('sources/items.queries.php', {
@@ -3416,10 +3411,8 @@ $var['hidden_asterisk'] = '<i class="fas fa-asterisk mr-2"></i><i class="fas fa-
                     //get data
                     data = decodeQueryReturn(retData, '<?php echo $_SESSION['key']; ?>');
 
-                    if (debugJavascript === true) {
-                        console.log('LIST ITEMS');
-                        console.log(data);
-                    }
+                    if (debugJavascript === true) console.log('LIST ITEMS');
+                    if (debugJavascript === true) console.log(data);
 
                     // reset doubleclick prevention
                     requestRunning = false;
