@@ -2,7 +2,7 @@
 if [ ! -d ${VOL}/.git ];
 then
 	echo "Initial setup..."
-	git clone $REPO_URL ${VOL}
+	git clone $REPO_URL ${VOL} --branch 3.0.0.7
 	mkdir ${VOL}/sk
 	chown -Rf nginx:nginx ${VOL}
 fi

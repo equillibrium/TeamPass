@@ -8,15 +8,18 @@ services:
     ports:
       - "443:443"
       - "5000"
+      - "80:80"
     volumes:
       - ./volumes/ssl:/etc/nginx/certs
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   teampass:
-    image: teampass/teampass
+    #image: teampass/teampass
+    build:
+      context: .
     restart: always
     environment:
-      VIRTUAL_HOST: teampass.example.com
+      VIRTUAL_HOST: mskt-osp-docker02.corp.tass.ru
     networks:
       - frontend
       - backend
@@ -25,7 +28,7 @@ services:
 
   db:
     restart: always
-    image: mysql/mysql-server:5.7
+    image: mysql/mysql-server
     environment:
       MYSQL_ROOT_PASSWORD: mypass
       MYSQL_DATABASE: teampass
